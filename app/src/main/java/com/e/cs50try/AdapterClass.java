@@ -18,6 +18,7 @@ import java.util.Stack;
 
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.AdapterViewHolder> {
+
     public static class AdapterViewHolder extends RecyclerView.ViewHolder{
         public LinearLayout linearLayout;
         public TextView textView,textView2;
@@ -25,6 +26,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.AdapterViewH
 
         AdapterViewHolder(View view){
             super(view);
+
             linearLayout = view.findViewById(R.id.linerlayout);
             textView = view.findViewById(R.id.textView);
             textView2 = view.findViewById(R.id.textView2);
@@ -42,16 +44,16 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.AdapterViewH
     @NonNull
     @Override
     public AdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, parent,false);
         return new AdapterViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
             Menu current = menu.get(position);
-            holder.textView.setText(current.name);
-            holder.textView2.setText(current.price);
-            holder.imageView.setImageResource(current.image);
+            holder.textView.setText(current.getItemName());
+            holder.textView2.setText(Integer.toString(current.getPrice()));
+            holder.imageView.setImageResource(current.getImage());
     }
 
     @Override
